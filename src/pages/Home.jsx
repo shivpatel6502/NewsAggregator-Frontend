@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "./Components/Navbar";
-import Sidebar from "./Components/Sidebar";
-import SearchBar from "./Components/SearchBar";
-import NewsGrid from "./Components/NewsGrid";
+import { useState, useEffect } from "react";
+import NewsGrid from "../Components/NewsGrid";
+import SearchBar from "../Components/SearchBar";
 
-export default function App() {
+export default function Home() {
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
 
-  // Dummy news articles
   useEffect(() => {
     const demoArticles = [
       {
@@ -48,46 +45,24 @@ export default function App() {
       },
     ];
 
-    setArticles(demoArticles);
-    setFilteredArticles(demoArticles);
+    setTimeout(() => {
+      setArticles(demoArticles);
+      setFilteredArticles(demoArticles);
+    }, 500);
   }, []);
 
   const handleSearch = (query) => {
-    const filtered = articles.filter(
-      (article) =>
-        article.title.toLowerCase().includes(query.toLowerCase()) ||
-        article.description.toLowerCase().includes(query.toLowerCase())
+    const filtered = articles.filter((article) =>
+      article.title.toLowerCase().includes(query.toLowerCase()) ||
+      article.description.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredArticles(filtered);
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Layout */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar */}
-        <Sidebar />
-
-        {/* Separator line between sidebar and main content */}
-        <div className="w-px bg-white dark:bg-gray-500" />
-
-        {/* Main Content */}
-        <main className="flex-1 overflow-auto p-6 bg-white dark:bg-black">
-          {/* News Aggregator Header */}
-          <h1 className="text-3xl font-bold text-black dark:text-white mb-6">
-            
-          </h1>
-
-          {/* Search Bar */}
-          <SearchBar onSearch={handleSearch} />
-
-          {/* News Grid */}
-          <NewsGrid articles={filteredArticles} />
-        </main>
-      </div>
+    <div className="p-6">
+      <SearchBar onSearch={handleSearch} />
+      <NewsGrid articles={filteredArticles} />
     </div>
   );
 }
