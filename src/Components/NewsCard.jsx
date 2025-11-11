@@ -10,7 +10,7 @@ export default function NewsCard({ article }) {
       <div
         className={`rounded-xl shadow-lg p-4 cursor-pointer border transition-all
           ${theme === "dark"
-            ? "bg-cream border-gray-300"
+            ? "bg-yellow-100 border-gray-300"
             : "bg-white border-gray-200"
           } hover:shadow-xl`}
       >
@@ -20,9 +20,9 @@ export default function NewsCard({ article }) {
           className="w-full h-48 object-cover rounded-lg mb-3"
           onClick={() => setIsOpen(true)}
         />
-        <h3 className="text-lg font-semibold text-gray-900">{article.title}</h3>
-        <p className="text-gray-700 text-sm mt-2">{article.description?.slice(0, 90)}...</p>
-        <div className="text-xs text-gray-500 mt-4">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{article.title}</h3>
+        <p className="text-gray-700 dark:text-gray-300 text-sm mt-2">{article.description?.slice(0, 90)}...</p>
+        <div className="text-xs text-gray-500 dark:text-gray-400 mt-4">
           {article.source} • {article.published}
         </div>
       </div>

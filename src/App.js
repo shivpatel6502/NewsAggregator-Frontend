@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
 import SearchBar from "./Components/SearchBar";
 import NewsGrid from "./Components/NewsGrid";
+
+// Pages
+import Home from "./pages/Home";
+import Trending from "./pages/Trending";
+import Bookmarks from "./pages/Bookmarks";
+import Favorites from "./pages/Favorites";
 
 export default function App() {
   const [articles, setArticles] = useState([]);
@@ -62,32 +70,39 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navbar */}
-      <Navbar />
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        {/* Navbar */}
+        <Navbar />
 
-      {/* Layout */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar */}
-        <Sidebar />
+        {/* Layout */}
+        <div className="flex flex-1 overflow-hidden">
+          {/* Sidebar */}
+          <Sidebar />
 
-        {/* Separator line between sidebar and main content */}
-        <div className="w-px bg-white dark:bg-gray-500" />
+          {/* Separator */}
+          <div className="w-px bg-white dark:bg-gray-500" />
 
-        {/* Main Content */}
-        <main className="flex-1 overflow-auto p-6 bg-white dark:bg-black">
-          {/* News Aggregator Header */}
-          <h1 className="text-3xl font-bold text-black dark:text-white mb-6">
-            
-          </h1>
+          {/* Main Content */}
+          <main className="flex-1 overflow-auto p-6 bg-white dark:bg-black">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Home
+                    handleSearch={handleSearch}
+                    filteredArticles={filteredArticles}
+                  />
+                }
+              />
 
-          {/* Search Bar */}
-          <SearchBar onSearch={handleSearch} />
-
-          {/* News Grid */}
-          <NewsGrid articles={filteredArticles} />
-        </main>
+              <Route path="/trending" element={<Trending />} />
+              <Route path="/bookmarks" element={<Bookmarks />} />
+              <Route path="/favorites" element={<Favorites />} />
+            </Routes>
+          </main>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }

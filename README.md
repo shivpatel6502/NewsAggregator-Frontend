@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# NewsAggregator-Frontend
+A modern and responsive News Aggregator built with React, Tailwind CSS, and a clean dashboard UI. Includes dark/light mode, sidebar navigation, search with live filtering, word counter, and dynamic news cards and many features to be added afterwards.
+>>>>>>> 78a3a676d9fcd7625c99c7cf071a6ca276e71cfd
